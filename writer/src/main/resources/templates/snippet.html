@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title th:text="${title}"></title>
+</head>
+<body>
+	<div th:fragment="biography" class="div_biography">
+		<h6 class="label_author_name" th:text="${author_name}">Name</h6>
+		<div class="div_author">
+
+			<img th:src="@{/application/images/author.png}" class="img_author"
+				alt="photo">
+			<h6 class="label_biography" th:text="${label_biography}">Biography
+				space</h6>
+			<br>
+			<p class="text_biography" th:text="${biography}"></p>
+
+		</div>
+
+	</div>
+
+	<div class="main_content" th:fragment="main_content">
+		<hr>
+		<div class="search">
+			<input th:type="text" th:name="search" th:placeholder="Search...">
+			<button>
+				<i class="fa fa-search" aria-hidden="true"></i>
+			</button>
+		</div>
+		<div class="topic_panel">
+			<table class="table table-hover  topic_table">
+				<thead>
+					<tr>
+						<th th:text="${topic_topic}"></th>
+						<th th:text="${topic_feedback}"></th>
+						<th th:text="${topic_rating}"></th>
+						<th th:text="${topic_score}"></th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="topic: ${topics}">
+						<tr>
+							<td th:text="${topic.topic}"></td>
+							<td th:text="${topic.feedback}"></td>
+							<td th:text="${topic.rating}"></td>
+							<td th:text="${topic.score}"></td>
+						</tr>
+					</th:block>
+
+				</tbody>
+			</table>
+			<div class="container topic_container">
+			   <span th:text="${topic_share}" style="padding-bottom:15px;"></span>
+				<textarea class = "form-control text_area" rows="10" ></textarea>
+			
+				<div style="padding: 10px;">
+					<span style="padding: 2px;" th:text="${topic_title}"></span> 
+					
+					<input th:type="text"  class="form-control"  th:name="topic_title" style="width: 50%">
+					<div style="padding: 10px;">
+						<button>save</button>
+						<button style="margin-left: 10px;">publish</button>
+
+					</div>
+				
+
+				</div>
+
+			</div>
+
+		</div>
+		
+	</div>
+</body>
+</html>

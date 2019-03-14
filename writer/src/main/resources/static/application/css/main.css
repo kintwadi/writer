@@ -1,0 +1,71 @@
+@charset "ISO-8859-1";
+
+.center {
+	margin: auto;
+	width: 60%;
+	border: 1px solid #FFF8DC
+	padding: 10px;
+}
+
+.img_logo {
+	width: 5%;
+	height: 5%;
+}
+
+.slogan {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	color: black;
+}
+
+.div_biography {
+	margin: auto;
+	width: 60%;
+	padding: 10px;
+}
+
+.img_author {
+	width: 15%;
+	height: 15%;
+	float: left;
+}
+.label_author_name{
+	
+}
+
+.label_biography {
+
+	float: left;
+
+}
+
+.text_biography {
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+.main_content{
+	
+	color: blue;
+}
+
+.search input[type=text] {
+  width: 200px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  border: 1px solid silver;
+}
+
+/* When the input field gets focus, change its width to 50% */
+.search input[type=text]:focus {
+  width: 47%;
+}
+
+.topic_table{
+	
+	float: left;
+}
+.text_area{
+
+	
+}
+

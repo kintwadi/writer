@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="resources::static">
+
+</head>
+
+<body>
+<img th:src="@{/application/images/logo.png}"  class="img_logo">
+<span class="slogan" th:text="${slogan}"></span>
+<!-- <h4 th:text="${welcome}"></h4><hr> -->
+<div class="center">
+
+	<div th:include="snippet:: biography"></div>
+	<div th:include="snippet:: main_content"></div>
+		
+</div>
+	
+
+
+</body>
+</html>
