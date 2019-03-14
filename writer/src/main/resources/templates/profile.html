@@ -6,17 +6,17 @@
 </head>
 
 <body>
-<img th:src="@{/application/images/logo.png}"  class="img_logo">
-<span class="slogan" th:text="${slogan}"></span>
-<!-- <h4 th:text="${welcome}"></h4><hr> -->
-<div class="center">
+	<img th:src="@{/application/images/logo.png}" class="img_logo">
+	<span class="slogan" th:text="${slogan}"></span>
+	<!-- <h4 th:text="${welcome}"></h4><hr> -->
+	<div class="center">
 
-	<div th:include="snippet:: biography"></div>
-	<div th:include="snippet:: main_content"></div>
-		
-</div>
+		<div th:include="snippet:: biography"></div>
+		<div th:include="snippet:: main_content"></div>
+
+	</div>
+<span th:include="resources::script"></span> 
 	
-
 
 </body>
 </html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title th:text="${title}"></title>
+<head th:include="resources::static">
+
+</head>
+<head th:include="resources::static">
+
 </head>
 <body>
 	<div th:fragment="biography" class="div_biography">
@@ -31,49 +31,56 @@
 			</button>
 		</div>
 		<div class="topic_panel">
-			<table class="table table-hover  topic_table">
-				<thead>
-					<tr>
-						<th th:text="${topic_topic}"></th>
-						<th th:text="${topic_feedback}"></th>
-						<th th:text="${topic_rating}"></th>
-						<th th:text="${topic_score}"></th>
-
-					</tr>
-				</thead>
-				<tbody>
-					<th:block th:each="topic: ${topics}">
+			<div >
+				<table class="table table-responsive table-hover header-fixed topic_table ">
+					<thead>
 						<tr>
-							<td th:text="${topic.topic}"></td>
-							<td th:text="${topic.feedback}"></td>
-							<td th:text="${topic.rating}"></td>
-							<td th:text="${topic.score}"></td>
-						</tr>
-					</th:block>
+							<th scope="col" th:text="${topic_topic}"></th>
+							<th scope="col" th:text="${topic_feedback}"></th>
+							<th scope="col" th:text="${topic_rating}"></th>
+							<th scope="col" th:text="${topic_score}"></th>
+							<th scope="col" th:text="${topic_action}"></th>
 
-				</tbody>
-			</table>
+
+						</tr>
+					</thead>
+					<tbody>
+						<th:block th:each="topic: ${topics}">
+							<tr>
+								<td th:text="${topic.topic}"></td>
+								<td th:text="${topic.feedback}"></td>
+								<td th:text="${topic.rating}"></td>
+								<td th:text="${topic.score}"></td>
+								<td th:text="${topic.topicId}" style="display: none"></td>
+								<td class="fa fa-trash btn btn-danger btn-xs"  style="width: 57px;margin-left: 3%;"></td>
+							</tr>
+						</th:block>
+
+					</tbody>
+				</table>
+			</div>
+			ss
 			<div class="container topic_container">
-			   <span th:text="${topic_share}" style="padding-bottom:15px;"></span>
-				<textarea class = "form-control text_area" rows="10" ></textarea>
-			
+				<span th:text="${topic_share}" style="padding-bottom: 15px;"></span>
+				<textarea class="form-control text_area" rows="10"></textarea>
+
 				<div style="padding: 10px;">
-					<span style="padding: 2px;" th:text="${topic_title}"></span> 
-					
-					<input th:type="text"  class="form-control"  th:name="topic_title" style="width: 50%">
+					<span style="padding: 2px;" th:text="${topic_title}"></span> <input
+						th:type="text" class="form-control" th:name="topic_title"
+						style="width: 50%">
 					<div style="padding: 10px;">
 						<button>save</button>
 						<button style="margin-left: 10px;">publish</button>
 
 					</div>
-				
 
 				</div>
 
 			</div>
 
 		</div>
-		
+
 	</div>
+	<span th:include="resources::script"></span> 
 </body>
 </html>

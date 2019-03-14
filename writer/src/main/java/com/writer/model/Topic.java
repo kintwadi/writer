@@ -5,14 +5,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class Topic {
 	
+	private long topicId;
 	private String topic;
 	private int feedback;
 	private int rating;
 	private int score;
 	
 	
-	public Topic(String topic, int feedback, int rating, int score) {
+	public Topic(String topic, int feedback, int rating, int score,long topicId) {
 		super();
+		this.topicId = topicId;
 		this.topic = topic;
 		this.feedback = feedback;
 		this.rating = rating;
@@ -46,6 +48,13 @@ public class Topic {
 	public void setScore(int score) {
 		this.score = score;
 	}
+	public long getTopicId() {
+		return topicId;
+	}
+	public void setTopicId(long topicId) {
+		this.topicId = topicId;
+	}
+	
 	
 	
 	
