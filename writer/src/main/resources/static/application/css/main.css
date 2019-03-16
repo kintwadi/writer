@@ -116,3 +116,8 @@ tbody td, thead th {
 i{
 	padding:5px;
 }
+.topic_container{
+	
+	display: none;
+	
+}

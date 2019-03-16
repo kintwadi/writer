@@ -30,8 +30,9 @@
 			</button>
 		</div>
 		<div class="topic_panel">
-			<div >
-				<table class="table table-responsive table-hover header-fixed topic_table ">
+			<div>
+				<table
+					class="table table-responsive table-hover header-fixed topic_table ">
 					<thead>
 						<tr>
 							<th scope="col" th:text="${topic_topic}"></th>
@@ -46,11 +47,16 @@
 					<tbody>
 						<th:block th:each="topic: ${topics}">
 							<tr>
-								<td th:class="topic" th:id="${topic.topicId}" th:text="${topic.topic}" ></td>
-								<td th:class="topic" th:id="${topic.topicId}" th:text="${topic.feedback}"></td>
-								<td th:class="topic" th:id="${topic.topicId}" th:text="${topic.rating}"></td>
-								<td th:class="topic" th:id="${topic.topicId}" th:text="${topic.score}"></td>
-								<td class="fa fa-trash topic" th:id="${topic.topicId}"  style="margin-left: 3%;"></td>
+								<td th:class="topic" th:id="${topic.topicId}"
+									th:text="${topic.topic}"></td>
+								<td th:class="topic" th:id="${topic.topicId}"
+									th:text="${topic.feedback}"></td>
+								<td th:class="topic" th:id="${topic.topicId}"
+									th:text="${topic.rating}"></td>
+								<td th:class="topic" th:id="${topic.topicId}"
+									th:text="${topic.score}"></td>
+								<td class="fa fa-trash topic" th:id="${topic.topicId}"
+									style="margin-left: 3%;"></td>
 							</tr>
 						</th:block>
 
@@ -58,39 +64,47 @@
 				</table>
 			</div>
 			<div th:class="topic_toggle" th:id="topic_toggle">
-				<span  th:class="topic_header">Drimer</span>
+				<span th:class="topic_header">Drimer</span>
 				<div th:class="topic_text">
-					<textarea class="form-control text_area" rows="10"  readonly th:text="${biography}"></textarea>
-					
+					<textarea class="form-control text_area" rows="10" readonly
+						th:text="${biography}"></textarea>
+
 				</div>
 				<hr>
 				<div th:class="topic_footer">
-				  	<i class="fa fa-pencil-square-o"></i>
-				  	<i class="fa fa-save"></i>
-				  	<i class="fa fa-share-alt"></i> 
-				  	<i th:text="${topic_rating}"></i><i class="fa fa-star"></i>
-				  	<i class="fa fa-comments-o"></i><span th:text="${feedback_value}"></span>
-				  	<i th:text="${topic_score}"></i><span th:text="${score_value}"></span>	&nbsp;
-				    <i class="fa fa-thumbs-up"></i>	<i th:text="${topic_like}"></i>	&nbsp;
-				  	<i class="fa fa-thumbs-down"></i><i th:text="${topic_dislike}"></i>
-				  	<i th:id="topic_toggle_close" style="float: right;color:red;" class="fa fa-window-close"></i>
-			
+
+					<i class="fa fa-pencil-square-o"></i> <i class="fa fa-save"></i> <i
+						class="fa fa-share-alt"></i> <i th:text="${topic_rating}"></i> <i
+						class="fa fa-star"></i> <i class="fa fa-comments-o"></i> <span
+						th:text="${feedback_value}"></span> <i th:text="${topic_score}"></i>
+					<span th:text="${score_value}"></span> &nbsp; <i
+						class="fa fa-thumbs-up"></i> <i th:text="${topic_like}"></i>
+					&nbsp; <i class="fa fa-thumbs-down"></i><i
+						th:text="${topic_dislike}"></i> <i th:id="topic_toggle_close"
+						style="float: right; color: red;" class="fa fa-window-close"></i>
+
 				</div>
 				<hr>
 			</div>
+			<div>
+				<i class="fa fa-edit topic_container_link" th:text="${write_idea}"></i>
+			</div>
+
 			<div class="container topic_container">
 				<span th:text="${topic_share}" style="padding-bottom: 15px;"></span>
 				<textarea class="form-control text_area" rows="10"></textarea>
 
-				<div style="padding: 10px;">
+				<div style="padding: 5px; margin: auto;">
 					<span style="padding: 2px;" th:text="${topic_title}"></span> <input
 						th:type="text" class="form-control" th:name="topic_title"
 						style="width: 50%">
-					<div style="padding: 10px;">
-						<button>save</button>
-						<button style="margin-left: 10px;">publish</button>
 
+					<div style="padding: 10px;">
+						<hr>
+						<i class="fa fa-save" ></i> <i class="fa fa-share-alt" ></i>
+						<hr>
 					</div>
+
 
 				</div>
 
@@ -99,6 +113,6 @@
 		</div>
 
 	</div>
-	<span th:include="resources::script"></span> 
+	<span th:include="resources::script"></span>
 </body>
 </html>

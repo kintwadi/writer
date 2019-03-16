@@ -24,5 +24,12 @@ var topicToggleClose = (e)=>{
 	$(".topic_toggle").slideUp();
 }
 topic_toggle_close.addEventListener('click',topicToggleClose);
+const topic_container_link = document.querySelector(".topic_container_link");
+
+const toggleTopicContainer = ()=>{
+	
+	$(".topic_container").slideToggle()();
+}
+topic_container_link.addEventListener('click',toggleTopicContainer)
 
 

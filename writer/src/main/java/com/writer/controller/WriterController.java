@@ -38,7 +38,7 @@ public class WriterController {
 	private String scoreLabel;
 	@Value("${str.topic.title.input}")
 	private String topicTitle;
-	@Value("${str.topic.share}")
+	@Value("${str.topic.label}")
 	private String topicShare;
 	@Value("${str.topic.action.label}")
 	private String topicAction;
@@ -51,8 +51,13 @@ public class WriterController {
 	private String topicLike;
 	@Value("${str.topic.dislike}")
 	private String topicDislike;
+	@Value("${str.topic.write}")
+	private String writeIdea;
+	
+	
 	
 	@GetMapping("/writer")
+	
 	public String profile(Model model) {
 		
 		model.addAttribute("welcome", welcome);
@@ -73,6 +78,9 @@ public class WriterController {
 		model.addAttribute("score_value", scoreValue);
 		model.addAttribute("topic_like", topicLike);
 		model.addAttribute("topic_dislike", topicDislike);
+		model.addAttribute("write_idea", writeIdea);
+		//model.addAttribute("share", share);
+		//model.addAttribute("save", save);
 		return "profile";
 	}
 	private List<Topic>getTopics(){
