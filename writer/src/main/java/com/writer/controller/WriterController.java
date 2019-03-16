@@ -21,8 +21,10 @@ public class WriterController {
 	private String slogan;
 	@Value("${str.author.biography.label}")
 	private String labelBiography;
+	
 	@Value("${str.author.biography.text}")
 	private String biography;
+	
 	@Value("${str.author.name}")
 	private String author;
 	
@@ -33,14 +35,23 @@ public class WriterController {
 	@Value("${str.topic.rating.label}")
 	private String rating;
 	@Value("${str.topic.score.label}")
-	private String score;
+	private String scoreLabel;
 	@Value("${str.topic.title.input}")
 	private String topicTitle;
 	@Value("${str.topic.share}")
 	private String topicShare;
-	
 	@Value("${str.topic.action.label}")
 	private String topicAction;
+	@Value("${str.topic.feedback.value}")
+	private String feedbackValue;
+	@Value("${str.topic.score.value}")
+	private String scoreValue;
+	
+	@Value("${str.topic.like}")
+	private String topicLike;
+	@Value("${str.topic.dislike}")
+	private String topicDislike;
+	
 	@GetMapping("/writer")
 	public String profile(Model model) {
 		
@@ -53,11 +64,15 @@ public class WriterController {
 		model.addAttribute("topic_topic", topic);
 		model.addAttribute("topic_feedback", feedback);
 		model.addAttribute("topic_rating", rating);
-		model.addAttribute("topic_score", score);
+		model.addAttribute("topic_score", scoreLabel);
 		model.addAttribute("topic_share",topicShare);
 		model.addAttribute("topics", getTopics());
 		model.addAttribute("topic_title", topicTitle);
 		model.addAttribute("topic_action", topicAction);
+		model.addAttribute("feedback_value", feedbackValue);
+		model.addAttribute("score_value", scoreValue);
+		model.addAttribute("topic_like", topicLike);
+		model.addAttribute("topic_dislike", topicDislike);
 		return "profile";
 	}
 	private List<Topic>getTopics(){
