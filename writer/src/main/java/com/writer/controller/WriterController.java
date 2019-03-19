@@ -30,6 +30,8 @@ public class WriterController {
 	
 	@Value("${str.topic.label}")
 	private String topic;
+	@Value("${str.topic.label2}")
+	private String topicLabel;
 	@Value("${str.topic.feedback.label}")
 	private String feedback;
 	@Value("${str.topic.rating.label}")
@@ -53,10 +55,17 @@ public class WriterController {
 	private String topicDislike;
 	@Value("${str.topic.write}")
 	private String writeIdea;
+	@Value("${str.topic.commenter}")
+	private String commenterName;
+	@Value("${str.topic.commenter.text}")
+	private String commenterText;
+	
+	@Value("${str.topic.comment.period}")
+	private String commentPeriod;
 	
 	
 	
-	@GetMapping("/writer")
+	@GetMapping("/")
 	
 	public String profile(Model model) {
 		
@@ -79,8 +88,10 @@ public class WriterController {
 		model.addAttribute("topic_like", topicLike);
 		model.addAttribute("topic_dislike", topicDislike);
 		model.addAttribute("write_idea", writeIdea);
-		//model.addAttribute("share", share);
-		//model.addAttribute("save", save);
+		model.addAttribute("topic_label2", topicLabel);
+		model.addAttribute("commenter_name", commenterName);
+		model.addAttribute("commenter_text", commenterText);
+		model.addAttribute("comment_period", commentPeriod);
 		return "profile";
 	}
 	private List<Topic>getTopics(){

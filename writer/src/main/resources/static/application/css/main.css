@@ -116,8 +116,41 @@ tbody td, thead th {
 i{
 	padding:5px;
 }
-.topic_container{
+.topic_container {
 	
 	display: none;
 	
 }
+#toggle_feedback_content{
+	display: none;
+	
+}
+
+.img_author_comment{
+
+}
+
+#reply_content{
+	margin-left:10%; 
+	width: 50%;
+	border-radius: 10px;
+	display: none;
+	overflow-y: scroll;
+	resize: none;
+}
+#instant_reply{
+	float:right;
+	border-radius: 10px;
+	width: 100%;
+	border-color:silver;
+	display: none;
+	text-align:justify;
+	overflow-y: scroll;
+	resize: none;
+	
+    
+	
+}
+
+
+
