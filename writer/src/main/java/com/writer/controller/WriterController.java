@@ -64,8 +64,13 @@ public class WriterController {
 	private String commentPeriod;
 	
 	
-	
 	@GetMapping("/")
+	public String init(Model model) {
+		
+		return "home";
+	}
+	
+	@GetMapping("/profile")
 	
 	public String profile(Model model) {
 		
