@@ -2,13 +2,24 @@ package com.writer.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.collections.map.HashedMap;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.Gson;
+import com.writer.model.Comment;
+import com.writer.model.Profile;
 import com.writer.model.Topic;
+import com.writer.service.Service;
 
 @Controller
 public class WriterController {
@@ -63,6 +74,10 @@ public class WriterController {
 	@Value("${str.topic.comment.period}")
 	private String commentPeriod;
 	
+	@Autowired
+	private Service service;
+	static Map<Long,Profile> map = null;
+	
 	
 	
 	@GetMapping("/")
@@ -80,7 +95,7 @@ public class WriterController {
 		model.addAttribute("topic_rating", rating);
 		model.addAttribute("topic_score", scoreLabel);
 		model.addAttribute("topic_share",topicShare);
-		model.addAttribute("topics", getTopics());
+		//model.addAttribute("topics", getTopics());
 		model.addAttribute("topic_title", topicTitle);
 		model.addAttribute("topic_action", topicAction);
 		model.addAttribute("feedback_value", feedbackValue);
@@ -92,7 +107,38 @@ public class WriterController {
 		model.addAttribute("commenter_name", commenterName);
 		model.addAttribute("commenter_text", commenterText);
 		model.addAttribute("comment_period", commentPeriod);
+		
+		Profile profile = service.getProfile(1);
+		//System.out.println("profile aqui : "+profile);
+		model.addAttribute("profile", profile);
+		map = new HashedMap();
+		profile.getTopics().forEach( topic ->{
+			
+			Profile p = new Profile(topic, null);
+			map.put(topic.getTopicId(),p);
+		});
+	
+		model.addAttribute("topic_map", map);
+		
+		//System.out.println(author.toString());
+		
 		return "profile";
+	}
+	
+	@PostMapping("updateTopic/{content}")
+	@ResponseBody
+	public String  editTopic(@PathVariable String content,Model model) {
+		
+		System.out.println("content: "+content);
+		
+		return content;
+	}
+	
+	@GetMapping("/topicid/{key}")
+	@ResponseBody
+	public Object getTopicMap(@PathVariable long key,Model model) {
+		
+		return map.get(key);
 	}
 	private List<Topic>getTopics(){
 		

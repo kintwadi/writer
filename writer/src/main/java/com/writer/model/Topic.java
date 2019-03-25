@@ -7,9 +7,13 @@ public class Topic {
 	
 	private long topicId;
 	private String topic;
+	private String title;
+	private int commentCount;
 	private int feedback;
 	private int rating;
 	private int score;
+	private int likeCount;
+	private int dislikeCount;
 	
 	
 	public Topic(String topic, int feedback, int rating, int score,long topicId) {
@@ -26,6 +30,21 @@ public class Topic {
 	}
 	public String getTopic() {
 		return topic;
+	}
+	
+	
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public int getCommentCount() {
+		return commentCount;
+	}
+	public void setCommentCount(int commentCount) {
+		this.commentCount = commentCount;
 	}
 	public void setTopic(String topic) {
 		this.topic = topic;
@@ -54,6 +73,25 @@ public class Topic {
 	public void setTopicId(long topicId) {
 		this.topicId = topicId;
 	}
+	public int getLikeCount() {
+		return likeCount;
+	}
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
+	}
+	public int getDislikeCount() {
+		return dislikeCount;
+	}
+	public void setDislikeCount(int dislikeCount) {
+		this.dislikeCount = dislikeCount;
+	}
+	@Override
+	public String toString() {
+		return "Topic [topicId=" + topicId + ", topic=" + topic + ", title=" + title + ", commentCount=" + commentCount
+				+ ", feedback=" + feedback + ", rating=" + rating + ", score=" + score + ", likeCount=" + likeCount
+				+ ", dislikeCount=" + dislikeCount + "]";
+	}
+	
 	
 	
 	

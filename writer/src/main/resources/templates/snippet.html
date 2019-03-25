@@ -5,9 +5,9 @@
 </head>
 <head th:include="resources::static">
 </head>
-<body>
+<body >
 	<div th:fragment="biography" class="div_biography">
-		<h6 class="label_author_name" th:text="${author_name}">Name</h6>
+		<h6 class="label_author_name" th:text="${profile.name}">Name</h6>
 		<div class="div_author">
 
 			<img th:src="@{/application/images/author.png}" class="img_author"
@@ -15,79 +15,44 @@
 			<h6 class="label_biography" th:text="${label_biography}">Biography
 				space</h6>
 			<br>
-			<p class="text_biography" th:text="${biography}"></p>
+			<p class="text_biography" th:text="${profile.biography}"></p>
 
 		</div>
 
 	</div>
-
+	<br><br>
 	<div class="main_content" th:fragment="main_content">
-		<hr>
-		<div class="search">
-			<input th:type="text" th:name="search" th:placeholder="Search...">
-			<button>
-				<i class="fa fa-search" aria-hidden="true"></i>
-			</button>
-		</div>
-		<div class="topic_panel">
-			<div>
-				<table
-					class="table table-responsive table-hover header-fixed topic_table ">
-					<thead>
-						<tr>
-							<th scope="col" th:text="${topic_topic}"></th>
-							<th scope="col" th:text="${topic_feedback}"></th>
-							<th scope="col" th:text="${topic_rating}"></th>
-							<th scope="col" th:text="${topic_score}"></th>
-							<th scope="col" th:text="${topic_action}"></th>
-
-
-						</tr>
-					</thead>
-					<tbody>
-						<th:block th:each="topic: ${topics}">
-							<tr>
-								<td th:class="topic" th:id="${topic.topicId}"
-									th:text="${topic.topic}"></td>
-								<td th:class="topic" th:id="${topic.topicId}"
-									th:text="${topic.feedback}"></td>
-								<td th:class="topic" th:id="${topic.topicId}"
-									th:text="${topic.rating}"></td>
-								<td th:class="topic" th:id="${topic.topicId}"
-									th:text="${topic.score}"></td>
-								<td class="fa fa-trash topic" th:id="${topic.topicId}"
-									style="margin-left: 3%;"></td>
-							</tr>
-						</th:block>
-
-					</tbody>
-				</table>
-			</div>
-			<div th:class="topic_toggle" th:id="topic_toggle">
-				<span th:class="topic_header">Drimer</span>
-				<div th:class="topic_text">
-					<textarea class="form-control text_area" rows="10" readonly
-						th:text="${biography}"></textarea>
+	<br>
+	<br>
+	<br>
+	<div th:class="topic_toggle" th:id="topic_toggle" >
+			<hr>
+				<span th:class="topic_header" th:id="toggle_title" >Drimer</span>
+				<div th:class="topic_text" >
+					<textarea class="form-control text_area" rows="10" readonly th:id="toggle_topic_text"></textarea>
 
 				</div>
 				<hr>
 				<div th:class="topic_footer">
 
-					<i class="fa fa-pencil-square-o"></i> <i class="fa fa-save"></i> <i
-						class="fa fa-share-alt"></i> <i th:text="${topic_rating}"></i> <i
-						class="fa fa-star"></i> <i class="fa fa-comments-o" style="cursor: progress"  th:id="feedback_toggler"></i> <span
-						th:text="${feedback_value}"></span> <i th:text="${topic_score}"></i>
-					<span th:text="${score_value}"></span> &nbsp; 
+					<i class="fa fa-pencil-square-o" th:id="toggle_topic_edit"></i> <i class="fa fa-save" th:id="toggle_topic_save"></i> 
+					<i class="fa fa-share-alt"></i> 
+					<i th:text="${topic_rating}"></i><i th:id="toggle_topic_rating_count"></i> 
+					<i th:id="toggle_rating_star"></i> 
+					<i class="fa fa-comments-o" style="cursor: progress;color:blue"  th:id="feedback_toggler">
+					</i> <span th:id="toggle_topic_comment_count"></span>
+					<i th:text="${topic_score}"></i>
+					<span th:id="toggle_topic_score_count"></span> &nbsp; 
 					<i class="fa fa-thumbs-up"></i> 
-					<i th:text="${topic_like}"></i>&nbsp; 
+					<i th:id="toggle_topic_like_count"></i>&nbsp; 
 					<i class="fa fa-thumbs-down"></i>
-					<i th:text="${topic_dislike}"></i> 
+					<i th:id ="toggle_topic_dislike_count"></i> 
 					<i th:id="topic_toggle_close" style="float: right; color: red; cursor: progress;" class="fa fa-window-close"></i>
 
 				</div>
-				<hr>
 			</div>
-			<div th:id ="toggle_feedback_content">
+	
+		<div th:id ="toggle_feedback_content">
 				<i th:text ="${commenter_name}"></i> <i th:text="${comment_period}" style="float: right;"> </i>
 				<img th:src="@{/application/images/author.png}" th:alt="image" th:class="img_author_comment" style="float: left; border: 1px solid silver;border-radius: 45px;">
 				<div >
@@ -106,6 +71,56 @@
 				<i></i><textarea th:id="reply_content" ></textarea>
 				<i th:id="topic_comment_toggle_close" style="float: right; color: red; cursor: progress;" class="fa fa-window-close"></i>
 			</div><br><br><br><hr>
+		
+		<div class="search">
+		
+			<input th:type="text" th:name="search" th:placeholder="Search...">
+
+			<span class="fa fa-search btn btn-secondary btn-sm" aria-hidden="true"></span>
+			
+		</div>
+		<div class="topic_panel">
+			<div>
+				<table
+					class="table table-responsive table-hover header-fixed topic_table ">
+					<thead>
+						<tr>
+							<th scope="col" th:text="${topic_topic}"></th>
+							<th scope="col" th:text="${topic_feedback}"></th>
+							<th scope="col" th:text="${topic_rating}"></th>
+							<th scope="col" th:text="${topic_score}"></th>
+							<th scope="col" th:text="${topic_action}"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<th:block th:each="topic: ${profile.topics}">
+							<tr>
+								
+								
+								<td th:class="topic" th:id="${topic.topicId}" th:text="${topic.title}">
+				
+								</td>
+									
+								<td th:class="topic" th:id="${topic.topicId}" th:text="${topic.commentCount}">
+								
+								</td>
+								<td th:class="topic" th:id="${topic.topicId}" th:text="${topic.rating}">
+									
+								</td>
+								<td th:class="topic" th:id="${topic.topicId}" th:text="${topic.score}">
+								
+								</td>
+								<td class="fa fa-trash topic" th:id="${topic.topicId}"
+									style="margin-left: 3%;"></td>
+								
+							</tr>
+						</th:block>
+
+					</tbody>
+				</table>
+			</div>
+			
+			
 			<div>
 				<i class="fa fa-edit topic_container_link" th:text="${write_idea}"></i>
 			</div>
