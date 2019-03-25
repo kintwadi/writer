@@ -79,8 +79,13 @@ public class WriterController {
 	static Map<Long,Profile> map = null;
 	
 	
-	
 	@GetMapping("/")
+	public String init(Model model) {
+		
+		return "home";
+	}
+	
+	@GetMapping("/profile")
 	
 	public String profile(Model model) {
 		
