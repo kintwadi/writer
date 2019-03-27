@@ -112,11 +112,11 @@ public class WriterController {
 		//System.out.println("profile aqui : "+profile);
 		model.addAttribute("profile", profile);
 		map = new HashedMap();
-		profile.getTopics().forEach( topic ->{
+		/*profile.getTopics().forEach( topic ->{
 			
 			Profile p = new Profile(topic, null);
 			map.put(topic.getTopicId(),p);
-		});
+		});*/
 	
 		model.addAttribute("topic_map", map);
 		
