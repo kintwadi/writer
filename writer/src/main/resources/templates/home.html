@@ -76,8 +76,8 @@
 
 		</div>
 
-		<!-- Trigger to open Modal -->
 
+		<div th:include="snippet:: topic_card"></div>		
 
 	</div>
 	<span th:include="resources::script"></span>
@@ -152,6 +152,30 @@
 
 			$('#login_modal').iziModal('open');
 		});
+		
+		// TOPIC CARD JS
+		$(document).ready(function(){
+  $(".read_more").click(function(){
+    $(".post-summary_more").slideToggle();
+    let read_more = document.querySelector(".read_more");
+    if(read_more.textContent.localeCompare("more") == 0){
+
+      read_more.textContent = "Less";
+    }else{
+      read_more.textContent = "more";
+    }
+    
+  });
+  
+  function writeComment(e){
+	  
+	  
+	  $(".post_comment").slideDown();
+  }
+   var write_comment = document.querySelector(".write_comment");
+   write_comment.addEventListener('click', writeComment);
+  
+});
 		
 	
 	</script>
