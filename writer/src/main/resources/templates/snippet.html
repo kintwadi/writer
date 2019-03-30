@@ -35,23 +35,25 @@
 				<hr>
 				<div th:class="topic_footer">
 
-					<i class="fa fa-pencil-square-o" th:id="toggle_topic_edit"></i> <i class="fa fa-save" th:id="toggle_topic_save"></i> 
-					<i class="fa fa-share-alt"></i> 
+					<i class="fa fa-pencil-square-o" th:id="toggle_topic_edit"></i> 
+					<i class="fa fa-save" th:id="toggle_topic_save"></i> 
+					<i class="fa fa-share-alt" id="toggle_topic_share"></i> 
 					<i th:text="${topic_rating}"></i><i th:id="toggle_topic_rating_count"></i> 
 					<i th:id="toggle_rating_star"></i> 
 					<i class="fa fa-comments-o" style="cursor: progress;color:blue"  th:id="feedback_toggler">
 					</i> <span th:id="toggle_topic_comment_count"></span>
-					<i th:text="${topic_score}"></i>
-					<span th:id="toggle_topic_score_count"></span> &nbsp; 
+					<i th:text="${topic_score}"></i><span th:id="toggle_topic_score_count"></span> &nbsp; 
 					<i class="fa fa-thumbs-up"></i> 
 					<i th:id="toggle_topic_like_count"></i>&nbsp; 
 					<i class="fa fa-thumbs-down"></i>
 					<i th:id ="toggle_topic_dislike_count"></i> 
 					<i th:id="topic_toggle_close" style="float: right; color: red; cursor: progress;" class="fa fa-window-close"></i>
-
+					<input type="hidden" id="toggle_topic_topicid" >
+					<input type="hidden" id="toggle_topic_share_save" >
+					
 				</div>
 			</div>
-	
+	<br><hr>
 		<div th:id ="toggle_feedback_content">
 				<i th:text ="${commenter_name}"></i> <i th:text="${comment_period}" style="float: right;"> </i>
 				<img th:src="@{/application/images/author.png}" th:alt="image" th:class="img_author_comment" style="float: left; border: 1px solid silver;border-radius: 45px;">
@@ -59,18 +61,19 @@
 					<p th:text="${commenter_text}"></p>
 					<br>
 					<hr>
-					<div style="width: 50%;float: right;">
+					<!-- <div style="width: 50%;float: right;">
 						<textarea class=""  th:id="instant_reply" readonly="readonly"></textarea>
-					</div>
+					</div> -->
 					
-				</div><br><br>
-				<hr>
-				<i class="fa fa-thumbs-up"></i> 
-				<i class="fa fa-thumbs-down"></i>
-				<i th:id="reply_link" style="padding: 5px; color:blue;">Reply</i><br><br>
-				<i></i><textarea th:id="reply_content" ></textarea>
+				</div>
+			
+				<!-- <i class="fa fa-thumbs-up"></i>  -->
+			<!-- 	<i class="fa fa-thumbs-down"></i> -->
+				<!-- <i th:id="reply_link" style="padding: 5px; color:blue;">Reply</i><br><br> -->
+				<!-- <i></i><textarea th:id="reply_content" ></textarea> -->
 				<i th:id="topic_comment_toggle_close" style="float: right; color: red; cursor: progress;" class="fa fa-window-close"></i>
-			</div><br><br><br><hr>
+			</div><br>
+			<hr>
 		
 		<div class="search">
 		

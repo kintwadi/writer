@@ -77,6 +77,8 @@ public class WriterController {
 	@Autowired
 	private Service service;
 	static Map<Long,Profile> map = null;
+	@Autowired
+	private Profile profile;
 	
 	
 	@GetMapping("/")
@@ -113,15 +115,10 @@ public class WriterController {
 		model.addAttribute("commenter_text", commenterText);
 		model.addAttribute("comment_period", commentPeriod);
 		
-		Profile profile = service.getProfile(1);
+		profile = service.getProfile(1);
 		//System.out.println("profile aqui : "+profile);
 		model.addAttribute("profile", profile);
-		map = new HashedMap();
-		profile.getTopics().forEach( topic ->{
-			
-			Profile p = new Profile(topic, null);
-			map.put(topic.getTopicId(),p);
-		});
+		map =  profileAsMap(profile);
 	
 		model.addAttribute("topic_map", map);
 		
@@ -130,13 +127,36 @@ public class WriterController {
 		return "profile";
 	}
 	
-	@PostMapping("updateTopic/{content}")
-	@ResponseBody
-	public String  editTopic(@PathVariable String content,Model model) {
+	private Map<Long,Profile> profileAsMap(Profile profile){
 		
+		
+		map = new HashedMap();
+		profile.getTopics().forEach( topic ->{
+			
+			Profile p = new Profile(topic, null);
+			map.put(topic.getTopicId(),p);
+		});
+		return map;
+	}
+	
+	@PostMapping("updateTopic/{topicId}/{share}/{content}")
+	@ResponseBody
+	public String updateTopic(@PathVariable long topicId, @PathVariable String share,@PathVariable String content,Model model) {
+		
+	
+		System.out.println("share: "+share);
+		System.out.println("topicId: "+topicId);
 		System.out.println("content: "+content);
 		
-		return content;
+		profile = service.getProfile(1);// profileid as param
+		//System.out.println("profile aqui : "+profile);
+		model.addAttribute("profile", profile);
+		map =  profileAsMap(profile);
+	
+		model.addAttribute("topic_map", map);
+
+		return service.updateTopic(topicId, share, content);
+		
 	}
 	
 	@GetMapping("/topicid/{key}")
