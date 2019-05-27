@@ -17,13 +17,18 @@ const toggleTopic = (e) =>{
 		 $.get("topicid/"+e.currentTarget.id, function(data, status){
 			 
 			 
-			    console.log("Data: " + JSON.stringify(data)); 
+			    //console.log("Data: " + JSON.stringify(data)); 
+			    //alert(JSON.stringify(data));
+			 	var content = document.querySelector("#toggle_topic_text");
+			 	content.textContent = "";
 			    data = data["topic"];
-			    document.querySelector("#toggle_topic_text").innerHTML = data["topic"];
+			    content.textContent= data["topic"];
 			    document.querySelector("#toggle_topic_comment_count").innerHTML= data["commentCount"];
 			    document.querySelector("#toggle_topic_like_count").innerHTML= data["likeCount"];
 			    document.querySelector("#toggle_topic_dislike_count").innerHTML= data["dislikeCount"];
 			    document.querySelector("#toggle_topic_score_count").innerHTML= data["score"];
+			    //save 
+			    document.querySelector("#toggle_topic_topicid").value= data["topicId"];
 			    
 			    var rating = document.querySelector("#toggle_topic_rating_count");
 			    
@@ -139,31 +144,29 @@ const feedback_toggler =  document.querySelector("#feedback_toggler");
 feedback_toggler.addEventListener('click',feedbackToggle);
 
 
-const replayToggle = (e) =>{
-	$("#reply_content").slideToggle();
-}
-const replay_link = document.querySelector("#reply_link");
-replay_link.addEventListener('click',replayToggle);
+//const replayToggle = (e) =>{
+	//$("#reply_content").slideToggle();
+//}
+//const replay_link = document.querySelector("#reply_link");
+//replay_link.addEventListener('click',replayToggle);
 
-document.querySelector('#reply_content').addEventListener('keypress', function (e) {
-    var key = e.which || e.keyCode;
-    if (key === 13) { // 13 is enter
-    	let instant_reply = document.querySelector("#instant_reply");
-    	let replay_content = document.querySelector("#reply_content");
-    	instant_reply.innerHTML = replay_content.value;
+//document.querySelector('#reply_content').addEventListener('keypress', function (e) {
+  //  var key = e.which || e.keyCode;
+   // if (key === 13) { // 13 is enter
+    	//let instant_reply = document.querySelector("#instant_reply");
+    	//let replay_content = document.querySelector("#reply_content");
+    	//instant_reply.innerHTML = replay_content.value;
     	
-        $("#instant_reply").show();
+        //$("#instant_reply").show();
         
-    }
-});
+    //}
+//});
 
 
 const toggleTopicEdit = (e)=>{
 	
-	
 	document.querySelector("#toggle_topic_text").removeAttribute("readonly");
 	document.querySelector("#toggle_topic_text").disabled = false;
-	
 	
 }
 
@@ -171,21 +174,34 @@ const toggleTopicEdit = (e)=>{
 function postData (url,param){
 	$.post(url,{param},
 	function(data, status){
-		alert("Data: " + data + "\nStatus: " + status);
+		
+		console.log("Data: " + data + "\nStatus: " + status);
 	});
 }
 
+
+
 const toggleTopicSave = (e)=>{
 	
-	var topic_text = document.querySelector("#toggle_topic_text");
-	topic_text.disabled = true;
-	let url = "updateTopic/"+topic_text.textContent;
-	postData (url,topic_text.textContent);
-	
+	var userId = null;
+	var topicId = document.querySelector("#toggle_topic_topicid");
+	var share = "false";
+	var id = e.currentTarget.id; 
+	if(id.localeCompare("toggle_topic_share") == 0){	
+		share = "true";		
+	}
+	const topic_tex = $("#toggle_topic_text").val();
+	//document.querySelector("#toggle_topic_text").disabled = true;
+	let url = "updateTopic/"+topicId.value +"/"+share+"/"+topic_tex;
+	postData (url,topic_tex);// topic_tex not used
+	window.location.reload();
+		
 }
 
 const toggle_topic_save = document.querySelector("#toggle_topic_save");
 toggle_topic_save.addEventListener('click',toggleTopicSave);
+var toggle_topic_share = document.querySelector("#toggle_topic_share");
+toggle_topic_share.addEventListener('click', toggleTopicSave);
 const toggle_topic_edit = document.querySelector("#toggle_topic_edit");
 toggle_topic_edit.addEventListener('click',toggleTopicEdit);
 

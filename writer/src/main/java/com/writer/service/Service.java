@@ -186,6 +186,36 @@ public class Service {
 
 	}
 	
+	public String updateTopic(long topicId,String share, String content){
+
+		ArrayList<Object> aut = null;
+
+
+		try {
+
+			sslDisabled(); 
+
+			restTemplate = new RestTemplate();
+
+			headers = new HttpHeaders();
+			//headers.set("APIKey","1458966666");
+			headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+			// updateTopic/{topicId}/{share}/{content}
+			String url = serverUrl+"/updateTopic/"+topicId+"/"+share+"/"+content;
+			httpEntity = new HttpEntity<String>(headers);
+			
+			responseEntity = restTemplate.postForEntity( url, httpEntity , String.class );
+
+		}catch (Exception e) {
+
+			System.out.println(e.getLocalizedMessage()); 
+
+		}
+
+		return responseEntity.getBody();
+
+	}
+	
 	public void sslDisabled() throws NoSuchAlgorithmException, KeyManagementException, IOException {
 		// Create a trust manager that does not validate certificate chains
 		TrustManager[] trustAllCerts = new TrustManager[] {new X509TrustManager() {
