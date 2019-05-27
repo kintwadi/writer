@@ -147,11 +147,14 @@ i{
 	display: none;
 	text-align:justify;
 	overflow-y: scroll;
-	resize: none;
-	
-    
-	
+	resize: none;	
 }
 
+#access_center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+
+}
 
 
