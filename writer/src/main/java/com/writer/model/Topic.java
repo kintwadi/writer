@@ -14,6 +14,7 @@ public class Topic {
 	private int score;
 	private int likeCount;
 	private int dislikeCount;
+	private boolean share;
 	
 	
 	public Topic(String topic, int feedback, int rating, int score,long topicId) {
@@ -33,7 +34,12 @@ public class Topic {
 	}
 	
 	
-	
+	public boolean isShare() {
+		return share;
+	}
+	public void setShare(boolean share) {
+		this.share = share;
+	}
 	public String getTitle() {
 		return title;
 	}
