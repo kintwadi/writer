@@ -10,10 +10,18 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import com.google.gson.Gson;
 import com.writer.model.Comment;
@@ -80,7 +88,6 @@ public class WriterController {
 	static Map<Long,Profile> map = null;
 	@Autowired
 	private Profile profile;
-	
 	
 	@GetMapping("/")
 	public String init(Model model) {
@@ -190,6 +197,21 @@ public class WriterController {
 		
 		return topics;
 		
+	}
+	
+	@GetMapping("/shat")
+	public String initShat() {
+		
+		return "shat";
+	}
+	
+	//@PostMapping("/send/{text}")
+	@RequestMapping(value = "send/{text}", method = RequestMethod.POST)
+	@ResponseBody
+	public String shat(@RequestParam String text) {
+		
+		System.out.println("message: "+ text);
+		return "your message was:  "+ text;
 	}
 	
 

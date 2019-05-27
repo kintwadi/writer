@@ -9,6 +9,175 @@
 
 
 	<div class="container">
+<<<<<<< HEAD
+		<br>
+		<a href="#" class="open_log_in_modal" style="float: right;">Access</a><br>
+		<br>
+	</div>
+	<hr>
+	<div class="center">
+
+		<!-- Modal structure -->
+		<div id="login_modal" data-izimodal-group="alerts">
+			<br>
+			<div class="container">
+
+				<ul class="nav nav-tabs">
+				
+					<li class="active" ><a data-toggle="tab" href="#login" style="padding:10px;">Sign in</a></li>
+					
+					<li><a data-toggle="tab" href="#signup" style="padding:10px;">Create account</a></li>
+				</ul>
+				<br><br><br>
+				<div class="tab-content" id ="access_center">
+					
+					<div id="login" class="tab-pane fade in active">
+						
+						<div>
+						 
+						   <h4>Sign in</h4><hr>
+						   <div>
+						   		<form>
+						   			<label>Email</label>
+						   			<input type="text" class="form-control">
+						   			<br>
+						   			<label style="float: left;">Password</label><a href="#" style="float: right;">Forgot your password?</a>
+						   			<input type="password" class="form-control">
+						   			<br>
+						   			<input type="checkbox"> Keep me signed in
+						   			<br><br>
+						   			<button type="submit" class=" form-control btn btn-dark">Sign in</button>
+						   		</form>
+						   </div>
+						</div>
+					</div>
+
+					<div id="signup" class="tab-pane fade">
+						
+						<div>
+						 
+						   <h4>Create account</h4><hr>
+						   <div>
+						   		<label>Your name</label>
+						   		<input type="text" class="form-control" id="mail">
+						   		<label>Email</label>
+						   		<input type="email" class="form-control">
+						   		<label style="float: left;">Password</label>
+						   		<input type="password" class="form-control">
+						   		<label style="float: left;">Re-enter password</label>
+						   		<input type="password" class="form-control">
+						   		<br>
+						   		<button type="submit" class=" form-control btn btn-dark">Create your account</button>
+						   </div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+
+		<div th:include="snippet:: topic_card"></div>		
+
+	</div>
+	<span th:include="resources::script"></span>
+
+	<script>
+		$("#login_modal").iziModal({
+			title : ' ',
+			subtitle : '',
+			headerColor : '#88A0B9',
+			background : null,
+			theme : '', // light
+			icon : "fa fa-sign-in", // icon : "fa fa-sign-in",
+			iconText : null,
+			iconColor : '',
+			rtl : false,
+			width : 450,
+			top : 200,
+			bottom : null,
+			borderBottom : true,
+			padding : 0,
+			radius : 3,
+			zindex : 999,
+			iframe : false,
+			iframeHeight : 400,
+			iframeURL : null,
+			focusInput : true,
+			group : '',
+			loop : false,
+			arrowKeys : true,
+			navigateCaption : true,
+			navigateArrows : true, // Boolean, 'closeToModal', 'closeScreenEdge'
+			history : false,
+			restoreDefaultContent : false,
+			autoOpen : 0, // Boolean, Number
+			bodyOverflow : false,
+			fullscreen : false,
+			openFullscreen : false,
+			closeOnEscape : true,
+			closeButton : true,
+			appendTo : 'body', // or false
+			appendToOverlay : 'body', // or false
+			overlay : true,
+			overlayClose : true,
+			overlayColor : 'rgba(0, 0, 0, 0.4)',
+			timeout : false,
+			timeoutProgressbar : false,
+			pauseOnHover : false,
+			timeoutProgressbarColor : 'rgba(255,255,255,0.5)',
+			transitionIn : 'comingIn',
+			transitionOut : 'comingOut',
+			transitionInOverlay : 'fadeIn',
+			transitionOutOverlay : 'fadeOut',
+			onFullscreen : function() {
+			},
+			onResize : function() {
+			},
+			onOpening : function() {
+			},
+			onOpened : function() {
+			},
+			onClosing : function() {
+			},
+			onClosed : function() {
+			},
+			afterRender : function() {
+			}
+		});
+
+		$(document).on('click', '.open_log_in_modal', function(event) {
+
+			event.preventDefault();
+
+			$('#login_modal').iziModal('open');
+		});
+		
+		// TOPIC CARD JS
+		$(document).ready(function(){
+  $(".read_more").click(function(){
+    $(".post-summary_more").slideToggle();
+    let read_more = document.querySelector(".read_more");
+    if(read_more.textContent.localeCompare("more") == 0){
+
+      read_more.textContent = "Less";
+    }else{
+      read_more.textContent = "more";
+    }
+    
+  });
+  
+  function writeComment(e){
+	  
+	  
+	  $(".post_comment").slideDown();
+  }
+   var write_comment = document.querySelector(".write_comment");
+   write_comment.addEventListener('click', writeComment);
+  
+});
+=======
 		<br> <a href="#" class="open_log_in_modal" style="float: right;">Log in or sign up</a><br>
 		<br>
 	</div>
@@ -154,6 +323,7 @@
 
 			$('#login_modal').iziModal('open');
 		});
+>>>>>>> refs/remotes/origin/master
 		
 	
 	</script>
