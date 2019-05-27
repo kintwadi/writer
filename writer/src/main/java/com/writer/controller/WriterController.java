@@ -38,6 +38,7 @@ public class WriterController {
 	
 	@Value("${str.author.name}")
 	private String author;
+	private String more;
 	
 	@Value("${str.topic.label}")
 	private String topic;
