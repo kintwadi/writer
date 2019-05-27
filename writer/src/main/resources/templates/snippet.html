@@ -35,9 +35,15 @@
 				<hr>
 				<div th:class="topic_footer">
 
+<<<<<<< HEAD
+<<<<<<< Upstream, based on origin/master
+					<i class="fa fa-pencil-square-o" th:id="toggle_topic_edit"></i> <i class="fa fa-save" th:id="toggle_topic_save"></i> 
+					<i class="fa fa-share-alt"></i> 
+=======
 					<i class="fa fa-pencil-square-o" th:id="toggle_topic_edit"></i> 
 					<i class="fa fa-save" th:id="toggle_topic_save"></i> 
 					<i class="fa fa-share-alt" id="toggle_topic_share"></i> 
+>>>>>>> refs/remotes/origin/master
 					<i th:text="${topic_rating}"></i><i th:id="toggle_topic_rating_count"></i> 
 					<i th:id="toggle_rating_star"></i> 
 					<i class="fa fa-comments-o" style="cursor: progress;color:blue"  th:id="feedback_toggler">
@@ -48,19 +54,65 @@
 					<i class="fa fa-thumbs-down"></i>
 					<i th:id ="toggle_topic_dislike_count"></i> 
 					<i th:id="topic_toggle_close" style="float: right; color: red; cursor: progress;" class="fa fa-window-close"></i>
+<<<<<<< HEAD
+=======
+					<i class="fa fa-pencil-square-o"></i> <i class="fa fa-save"></i> <i
+						class="fa fa-share-alt"></i> <i th:text="${topic_rating}"></i> <i
+						class="fa fa-star"></i> <i class="fa fa-comments-o"
+						style="cursor: progress" th:id="feedback_toggler"></i> <span
+						th:text="${feedback_value}"></span> <i th:text="${topic_score}"></i>
+					<span th:text="${score_value}"></span> &nbsp; <i
+						class="fa fa-thumbs-up"></i> <i th:text="${topic_like}"></i>&nbsp;
+					<i class="fa fa-thumbs-down"></i> <i th:text="${topic_dislike}"></i>
+					<i th:id="topic_toggle_close"
+						style="float: right; color: red; cursor: progress;"
+						class="fa fa-window-close"></i>
+>>>>>>> f7570fe c
+
+=======
 					<input type="hidden" id="toggle_topic_topicid" >
 					<input type="hidden" id="toggle_topic_share_save" >
 					
+>>>>>>> refs/remotes/origin/master
 				</div>
 			</div>
+<<<<<<< HEAD
+<<<<<<< Upstream, based on origin/master
+	
+=======
 	<br><hr>
+>>>>>>> refs/remotes/origin/master
 		<div th:id ="toggle_feedback_content">
 				<i th:text ="${commenter_name}"></i> <i th:text="${comment_period}" style="float: right;"> </i>
 				<img th:src="@{/application/images/author.png}" th:alt="image" th:class="img_author_comment" style="float: left; border: 1px solid silver;border-radius: 45px;">
 				<div >
+=======
+			<div th:id="toggle_feedback_content">
+				<i th:text="${commenter_name}"></i> <i th:text="${comment_period}"
+					style="float: right;"> </i> <img
+					th:src="@{/application/images/author.png}" th:alt="image"
+					th:class="img_author_comment"
+					style="float: left; border: 1px solid silver; border-radius: 45px;">
+				<div>
+>>>>>>> f7570fe c
 					<p th:text="${commenter_text}"></p>
 					<br>
 					<hr>
+<<<<<<< HEAD
+					<div style="width: 50%; float: right;">
+						<textarea class="" th:id="instant_reply" readonly="readonly"></textarea>
+					</div>
+
+				</div>
+				<br>
+				<br>
+				<hr>
+<<<<<<< Upstream, based on origin/master
+				<i class="fa fa-thumbs-up"></i> 
+				<i class="fa fa-thumbs-down"></i>
+				<i th:id="reply_link" style="padding: 5px; color:blue;">Reply</i><br><br>
+				<i></i><textarea th:id="reply_content" ></textarea>
+=======
 					<!-- <div style="width: 50%;float: right;">
 						<textarea class=""  th:id="instant_reply" readonly="readonly"></textarea>
 					</div> -->
@@ -71,6 +123,7 @@
 			<!-- 	<i class="fa fa-thumbs-down"></i> -->
 				<!-- <i th:id="reply_link" style="padding: 5px; color:blue;">Reply</i><br><br> -->
 				<!-- <i></i><textarea th:id="reply_content" ></textarea> -->
+>>>>>>> refs/remotes/origin/master
 				<i th:id="topic_comment_toggle_close" style="float: right; color: red; cursor: progress;" class="fa fa-window-close"></i>
 			</div><br>
 			<hr>
@@ -124,6 +177,20 @@
 			</div>
 			
 			
+=======
+				<i class="fa fa-thumbs-up"></i> <i class="fa fa-thumbs-down"></i> <i
+					th:id="reply_link" style="padding: 5px; color: blue;">Reply</i><br>
+				<br> <i></i>
+				<textarea th:id="reply_content"></textarea>
+				<i th:id="topic_comment_toggle_close"
+					style="float: right; color: red; cursor: progress;"
+					class="fa fa-window-close"></i>
+			</div>
+			<br>
+			<br>
+			<br>
+			<hr>
+>>>>>>> f7570fe c
 			<div>
 				<i class="fa fa-edit topic_container_link" th:text="${write_idea}"></i>
 			</div>
@@ -139,13 +206,107 @@
 
 					<div style="padding: 10px;">
 						<hr>
-						<i class="fa fa-save" ></i> <i class="fa fa-share-alt" ></i>
+						<i class="fa fa-save"></i> <i class="fa fa-share-alt"></i>
 						<hr>
 					</div>
 
 
 				</div>
 
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- TOPIC CARD FRAGMENT -->
+	<div th:fragment="topic_card" class="div_topic_card">
+
+
+
+
+		<div class="post-container">
+
+			<div class="post-header">
+				<div class="post-author--no-cover">
+					<h3>John Doe</h3>
+				</div>
+			</div>
+
+			<div class="post-body">
+				<div class="post-title">
+					<h3>
+						<a href="#">Dreaming of you</a>
+					</h3>
+				</div>
+				<div class="post-summary">
+					<p>Here is an example of a post without a cover image. You
+						don't always have to have a cover image. In fact, leaving them out
+						from time to time and disrupt the predictive flow and make the
+						overall design more interesting. Something to think about.</p>
+					<p class="post-summary_more">Lorem ipsum dolor sit amet,
+						consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+						invidunt ut labore et dolore magna aliquyam erat, sed diam
+						voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+						Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+						dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+						elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+						magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+						justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+						takimata sanctus est Lorem ipsum dolor sit amet.</p>
+				</div>
+				<div class="post-tags">
+					<ul>
+						<li><a href="#" class="read_more">more</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="post-footer">
+				<br>
+				<ul>
+					<li class="published-date"></li>
+					<li class="write_comment"><a href="#" class="numero">write a comment</a></li>
+					<!-- <li class="shares"><a href="#"><span class="numero">rating 3</span></a></li> -->
+				</ul>
+				<div class="post_comment">
+					<span class="form_input">Name</span> <input type="text"
+						class="form-control"> <span class="form_input">Email</span>
+					<input type="email" class="form-control"><br>
+					<textarea class="form-control rounded-0" rows="4"></textarea>
+					<br> <a href="#" class="btn btn-light  btn-xs form_input">post
+						your comment</a>
+
+				</div>
+				<hr>
+				<div class="comment_entry table-responsive">
+					<table class="">
+						<thead>
+							<tr>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+								<div class="image_comment">
+									<img th:src="@{/application/images/icon.png}">
+								</div></td>
+								
+								<td>
+								<i style="float: left;">John Doe</i><br> <br>
+								<div style="margin-left: 5px;">
+										<p >your text is very good</p>
+								</div>
+							
+								
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
 			</div>
 
 		</div>
