@@ -47,7 +47,7 @@ public class WriterController {
 	@Value("${str.author.name}")
 	private String author;
 
-	private String moredd;
+	private String moreddxxx;
 
 	private String moress;
 
